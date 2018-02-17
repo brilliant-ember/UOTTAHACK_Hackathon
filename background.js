@@ -7,6 +7,19 @@ chrome.browserAction.onClicked.addListener(function(activeTab) {
     // main page
     //
 
+    /*
+    chrome.storage.local.get("blocker", function (obj) {
+
+        console.log(obj);
+
+        if (obj == {}) { // value is unset
+            //chrome.storage.local.set({'blocker': state});
+            console.log("not defined - blocker");
+        }
+        console.log("defined - blocker");
+    }); */
+
+    //initStorage(true);
     mainMenu(true); // true requests new tab
 });
 
@@ -28,21 +41,6 @@ chrome.webRequest.onBeforeRequest.addListener(function(evt) {
 // ****************
 // helper functions
 // ****************
-
-function blockState() {
-    // returns true if pages should be blocked
-    //
-
-    // TODO
-    return true;
-}
-
-function toggleBlockState() {
-    // toggle block state
-    //
-
-    // TODO
-}
 
 function isWhiteList(url) {
     // check if url is on white list
@@ -73,3 +71,40 @@ function mainMenu(newTab) {
         });
     }
 }
+
+//
+// storage
+//
+
+function initStorage(state) {
+    // ensures storage value is init
+    //
+
+    chrome.storage.local.get("blocker", function (obj) {
+        if (obj == {}) { // value is unset
+            chrome.storage.local.set({'blocker': state});
+        }
+    });
+}
+
+function getBlockState(callback) {
+    // returns true if pages should be blocked
+    //
+
+    chrome.storage.local.get("blocker", function (value) {
+        callback(value); // calls callback with blockState
+    });
+}
+
+function toggleBlockState() {
+    // toggle block state
+    //
+
+    chrome.storage.local.get("blocker", function (value) {
+        chrome.storage.local.set({'blocker': !value});
+    });
+}
+
+
+
+// end
