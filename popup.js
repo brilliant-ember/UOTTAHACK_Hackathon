@@ -3,6 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('button').addEventListener('click', main);      
 });
 function main() {
-    
-    document.getElementById("test").innerHTML = "HI";
+//    alert(tab.url);
+    document.getElementById("block_except").innerHTML = "HI";
 }
