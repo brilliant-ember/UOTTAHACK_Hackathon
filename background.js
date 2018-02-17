@@ -2,8 +2,6 @@
 // main events
 // ***********
 
-let EXT_ID = 'oceibmiohadejaominokfpmimceifdmn';
-
 chrome.browserAction.onClicked.addListener(function(activeTab) {
     // when the extension icon is clicked launch the extensions
     // main page
@@ -43,7 +41,6 @@ function isWhiteList(url) {
     //
 
     let whiteList = [
-        EXT_ID,             // app id
         "fonts",            // css google font
         "style.css",        // extension styles
         "chrome-extension",  // extension pages
@@ -59,12 +56,12 @@ function isWhiteList(url) {
 function mainMenu(newTab) {
 
     if (newTab) {
-        var _url = "chrome-extension://"+ EXT_ID +"/main.html";
+        var _url = "main.html";
         chrome.tabs.create({ url: _url });
 
     } else {
         chrome.tabs.query({currentWindow: true, active: true}, function (tab) {
-              chrome.tabs.update(tab.id, {url: "chrome-extension://"+ EXT_ID +"/main.html"});
+              chrome.tabs.update(tab.id, {url: "main.html"});
         });
     }
 }
@@ -98,16 +95,6 @@ function toggleBlockState() {
     });
 }
 
-//
-// messages
-//
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        console.log("received message - background");
-        sendResponse({farewell: "goodbye"});
-    }
-);
 
 
 
