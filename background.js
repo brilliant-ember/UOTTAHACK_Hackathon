@@ -1,37 +1,52 @@
+// ***********
+// main events
+// ***********
+
 chrome.browserAction.onClicked.addListener(function(activeTab) {
-    var _url = "chrome-extension://oceibmiohadejaominokfpmimceifdmn/main.html";
-    chrome.tabs.create({ url: _url });
+    // when the extension icon is clicked launch the extensions
+    // main page
+    //
+
+    mainMenu(true); // true requests new tab
 });
 
 chrome.webRequest.onBeforeRequest.addListener(function(evt) {
-    //
-    // intercepts all browser requests and cancels them
+    // intercept all browser requests and cancel them
+    // redirect user to the extension main page
     //
 
-    // block all pages except for ui-pages belonging to this extension
+    // don't block pages used by this extension
     if ( !isWhiteList(evt.url) ) {
 
-        chrome.tabs.query({currentWindow: true, active: true}, function (tab) {
-              chrome.tabs.update(tab.id, {url: "chrome-extension://oceibmiohadejaominokfpmimceifdmn/main.html"});
-        });
+        mainMenu(false); // redirects current page
 
-        // return {cancel: true}; // not required because of re-direction
     }
 
 }, {urls: ["<all_urls>"]}, ['blocking']);
 
-//
+
+// ****************
 // helper functions
-//
-function loadMain() {
-    chrome.tabs.getCurrent(function (tab) {
-        console.log(tab.id);
-        chrome.tabs.update(tab.id, {url: "chrome-extension://oceibmiohadejaominokfpmimceifdmn/main.html"});
-    });
+// ****************
+
+function blockState() {
+    // returns true if pages should be blocked
+    //
+
+    // TODO
+    return true;
+}
+
+function toggleBlockState() {
+    // toggle block state
+    //
+
+    // TODO
 }
 
 function isWhiteList(url) {
-    // check if this url is on the white list
+    // check if url is on white list
+    //
 
     let whiteList = [
         "oceibmiohadejaominokfpmimceifdmn", // app id
@@ -44,4 +59,17 @@ function isWhiteList(url) {
         if (url.indexOf(whiteList[i]) != -1){ return true; }
     }
     return false;
+}
+
+function mainMenu(newTab) {
+
+    if (newTab) {
+        var _url = "chrome-extension://oceibmiohadejaominokfpmimceifdmn/main.html";
+        chrome.tabs.create({ url: _url });
+
+    } else {
+        chrome.tabs.query({currentWindow: true, active: true}, function (tab) {
+              chrome.tabs.update(tab.id, {url: "chrome-extension://oceibmiohadejaominokfpmimceifdmn/main.html"});
+        });
+    }
 }
