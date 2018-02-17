@@ -15,9 +15,10 @@ chrome.webRequest.onBeforeRequest.addListener(function(evt) {
     // redirect user to the extension main page
     //
 
-    // don't block pages used by this extension
+    // block if not on whitelist
     if ( !isWhiteList(evt.url) ) {
 
+        // block if cat is active
         chrome.storage.sync.get({
             blocker: true
 
@@ -66,34 +67,7 @@ function mainMenu(newTab) {
     }
 }
 
-//
-// storage
-//
 
-function getBlockState(callback) {
-    // returns true if pages should be blocked
-    //
-
-    chrome.storage.local.get("blocker", function (value) {
-        callback(value); // calls callback with blockState
-    });
-}
-
-function toggleBlockState() {
-    // toggle block state
-    //
-
-    chrome.storage.local.get("blocker", function (obj) {
-
-        if (obj) {
-            chrome.storage.local.set({'blocker': false});
-
-        } else {
-            chrome.storage.local.set({'blocker': true});
-        }
-
-    });
-}
 
 
 
