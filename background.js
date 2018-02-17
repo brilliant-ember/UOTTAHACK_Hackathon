@@ -9,8 +9,7 @@ chrome.browserAction.onClicked.addListener(function(activeTab) {
     // main page
     //
 
-    //initStorage(true);
-    //mainMenu(true); // true requests new tab
+    mainMenu(true); // true requests new tab
 });
 
 chrome.webRequest.onBeforeRequest.addListener(function(evt) {
@@ -21,8 +20,15 @@ chrome.webRequest.onBeforeRequest.addListener(function(evt) {
     // don't block pages used by this extension
     if ( !isWhiteList(evt.url) ) {
 
-        mainMenu(false); // redirects current page
+        chrome.storage.sync.get({
+            blocker: true
 
+        }, function(value) {
+
+            if (value['blocker']) {
+                mainMenu(false); // redirects current page if cat not distracted
+            }
+        });
     }
 
 }, {urls: ["<all_urls>"]}, ['blocking']);
@@ -40,7 +46,8 @@ function isWhiteList(url) {
         EXT_ID,             // app id
         "fonts",            // css google font
         "style.css",        // extension styles
-        "chrome-extension"  // extension pages
+        "chrome-extension",  // extension pages
+        "options"
     ];
 
     for (let i=0; i<whiteList.length; i++) {
@@ -90,6 +97,17 @@ function toggleBlockState() {
 
     });
 }
+
+//
+// messages
+//
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log("received message - background");
+        sendResponse({farewell: "goodbye"});
+    }
+);
 
 
 
