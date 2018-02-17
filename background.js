@@ -34,9 +34,10 @@ function isWhiteList(url) {
     // check if this url is on the white list
 
     let whiteList = [
-        "oceibmiohadejaominokfpmimceifdmn",
-        "fonts",
-        "style.css"
+        "oceibmiohadejaominokfpmimceifdmn", // app id
+        "fonts",                            // css google font
+        "style.css",                        // extension styles
+        "chrome-extension"                  // extension pages
     ];
 
     for (let i=0; i<whiteList.length; i++) {
