@@ -25,6 +25,8 @@ function restore_options() {
 }
 
 function blockingState(value) {
+    // when told a value makes sure remaining page elements line up with that value
+    //
 
     // default value = false
     let options = {
@@ -42,10 +44,31 @@ function blockingState(value) {
         }
     }
 
-    document.getElementById("state").innerHTML   = options.state;
-    document.getElementById("cat-img").src       = options.cat_img_src;
-    document.getElementById("page-h1").innerHTML = options.title;
+    document.getElementById("state").innerHTML    = options.state;
+    document.getElementById("title-img").src      = options.cat_img_src;
+    document.getElementById("title-h1").innerHTML = options.title;
+}
+
+function activate_timer() {
+    // hides toggle button and starts timer
+    // preventing user from turining off
+    // until seconds have passed
+    //
+
+    document.getElementById("title-button").style.visibility = 'hidden';
+    chrome.storage.sync.set({blocker: true});
+    blockingState(true);
+
+    let seconds = parseInt(document.getElementById("seconds-input").value) * 1000;
+    document.getElementById("seconds-input").value = "";
+
+    setTimeout(function() {
+        document.getElementById("title-button").style.visibility = 'visible';
+        chrome.storage.sync.set({blocker: false});
+        blockingState(false);
+    }, seconds);
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('title-btn').addEventListener('click', save_options);
+document.getElementById('title-button').addEventListener('click', save_options);
+document.getElementById('go-button').addEventListener('click', activate_timer);

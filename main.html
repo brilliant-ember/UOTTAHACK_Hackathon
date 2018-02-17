@@ -8,10 +8,30 @@
 
   <body>
 
-    <div class="title">
-        <img id="cat-img" class="title-img" src="cat/cat_will_block.png" />
-        <h1 id="page-h1" class="title-h1">Cat will Blocks all Distraction</h1>
-        <button id="title-btn" class="title-button">Toggle Blocking <span id="state"></span></button>
+    <div class="container">
+        <div class="row row1">
+            <img id="title-img" src="cat/cat_will_block.png" />
+        </div>
+
+        <div class="row row2">
+            <h1 id="title-h1">Cat will Blocks all Distraction</h1>
+        </div>
+
+        <div class="row row3">
+            <button id="title-button">Toggle Blocking <span id="state"></span></button>
+        </div>
+
+        <hr>
+
+        <div class="row row4">
+            <p>Set a timer and remain distraction free:</p>
+        </div>
+
+        <div class="row row5">
+            <input id="seconds-input"></input> seconds
+            <button id="go-button">Go!</button>
+        </div>
+
     </div>
 
     <script src="options.js"></script>
