@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Blocker",
+  "name": "Blocker for Productivity",
   "description": "This extension blocks navagation to sites when you're trying to focus",
   "version": "1.0",
 
