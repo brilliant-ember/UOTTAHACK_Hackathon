@@ -39,8 +39,8 @@ function blockingState(value) {
     if (value) {
         options = {
             state: "Off",
-            cat_img_src: "cat/cat_will_block.png",
-            title: "Cat will Blocks all Distraction"
+            cat_img_src: "cat/kitty_block.gif",
+            title: "Kitty will Blocks all Distraction, so you can be a productive cookie"
         }
     }
 
