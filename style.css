@@ -1,0 +1,60 @@
+body {
+    background-image: url("cloudy-day/cloudy-day.png");
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #333;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Concert One', cursive;
+    margin-top: 10vh;
+}
+
+.container {
+    width: 80vw;
+    background: #FFF;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 10vh;
+}
+
+#title-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#title-h1 {
+    text-align: center;
+}
+
+#title-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2rem;
+    font-family: 'Concert One', cursive;
+    visibility: visible;
+}
+
+.row1 {
+    height: 250px;
+}
+
+hr {
+    margin-top: 30px;
+}
+
+input {
+    font-size: 2rem;
+    width: 90px;
+}
+
+#go-button {
+    font-size: 2rem;
+    font-family: 'Concert One', cursive;
+}
+
+#url-input {
+    width: 350px;
+}
