@@ -15,6 +15,8 @@ body {
     background: #FFF;
     border-radius: 12px;
     padding: 30px;
+    height: 900px;
+    margin-bottom: 10vh;
 }
 
 #title-img {
@@ -52,4 +54,8 @@ input {
 #go-button {
     font-size: 2rem;
     font-family: 'Concert One', cursive;
+}
+
+#url-input {
+    width: 350px;
 }

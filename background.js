@@ -24,9 +24,9 @@ chrome.webRequest.onBeforeRequest.addListener(function(evt) {
 
         }, function(value) {
 
-            if (value['blocker']) {
-                mainMenu(false); // redirects current page if cat not distracted
-            }
+                if (value['blocker']) {
+                    mainMenu(false);
+                }
         });
     }
 
