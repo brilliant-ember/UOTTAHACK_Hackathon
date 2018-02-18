@@ -1,0 +1,12 @@
+Adobe After Effects v13.8.1 Windows 64 render log for project “cat gif.aep”
+
+Rendering started on 2/18/2018 at 9:00:27 AM
+
+  2/18/2018 9:00:28 AM: Starting composition “kitty sleep”.
+
+  Output To: D:\Code\UOTTAHACK Hackathon\AE rendred\kitty\kitty sleep.mov    2/18/2018 9:00:32 AM: Finished composition “kitty sleep”.
+
+
+  Total Time Elapsed: 5 Seconds
+Log closed on 2/18/2018 at 9:00:32 AM
+
