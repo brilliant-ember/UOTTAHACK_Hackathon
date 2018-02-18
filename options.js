@@ -36,7 +36,7 @@ function blockingState(value) {
     let options = {
         state: "On",
         cat_img_src: "cat/sleeping_kitty.gif",
-        title: "Kitty is sleeping, Prrrr..."
+        title: "Kitty is sleeping. Prrrr..."
     };
 
     // alter options value = true
