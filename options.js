@@ -35,8 +35,8 @@ function blockingState(value) {
     // default value = false
     let options = {
         state: "On",
-        cat_img_src: "cat/cat_not_block.png",
-        title: "Cat is Distracted..."
+        cat_img_src: "cat/sleeping_kitty.gif",
+        title: "Kitty is sleeping, Prrrr..."
     };
 
     // alter options value = true
