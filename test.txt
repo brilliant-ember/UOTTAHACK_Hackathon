@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 Mohammed
+=======
+Richard
+>>>>>>> d4edfa1a53a40beeb3fb39d4afa288f16a17ae27
+
+Merge test
