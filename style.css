@@ -58,3 +58,7 @@ input {
 #url-input {
     width: 350px;
 }
+
+a {
+    text-decoration: none;
+}

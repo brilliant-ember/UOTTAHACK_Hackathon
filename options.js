@@ -21,6 +21,7 @@ function restore_options() {
     }, function(value) {
         chrome.storage.sync.set({blocker: value['blocker']});
         chrome.storage.sync.set({timer: value['timer']});
+
         blockingState(value['blocker']);
         timerState(value['timer']);
 
@@ -59,12 +60,14 @@ function timerState(state) {
         document.getElementById("timer-input").style.visibility = 'hidden';
         document.getElementById("go-button").style.visibility   = 'hidden';
         document.getElementById("timer-word").style.visibility  = 'hidden';
+        document.getElementById("title-button").style.visibility= 'hidden';
 
     } else {
         document.getElementById("timer-text").style.visibility  = 'visible';
         document.getElementById("timer-input").style.visibility = 'visible';
         document.getElementById("go-button").style.visibility   = 'visible';
         document.getElementById("timer-word").style.visibility  = 'visible';
+        document.getElementById("title-button").style.visibility= 'visible';
 
     }
 }
@@ -82,19 +85,26 @@ function activate_timer() {
         document.getElementById("timer-input").value = "";
 
         document.getElementById("title-button").style.visibility = 'hidden';
-        chrome.storage.sync.set({blocker: true});
+        chrome.storage.sync.set({blocker: true, timer: true});
         blockingState(true);
         timerState(true);
 
         setTimeout(function() {
             document.getElementById("title-button").style.visibility = 'visible';
-            chrome.storage.sync.set({blocker: false});
+            chrome.storage.sync.set({blocker: false, timer: false});
             blockingState(false);
             timerState(false);
         }, time);
     }
 }
 
+function reset_state() {
+    chrome.storage.sync.set({blocker: true, timer: false});
+    blockingState(true);
+    timerState(false);
+}
+
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('title-button').addEventListener('click', save_options);
 document.getElementById('go-button').addEventListener('click', activate_timer);
+document.getElementById('reset-link').addEventListener('click', reset_state);
