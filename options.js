@@ -20,7 +20,7 @@ function restore_options() {
 
     }, function(value) {
         chrome.storage.sync.set({blocker: value['blocker']});
-        chrome.storage.sync.set({blocker: value['timer']});
+        chrome.storage.sync.set({timer: value['timer']});
         blockingState(value['blocker']);
         timerState(value['timer']);
 
@@ -78,7 +78,7 @@ function activate_timer() {
     let timestring = document.getElementById("timer-input").value;
 
     if (timestring != "") {
-        let time = parseInt(timestring) * 60000;
+        let time = parseFloat(timestring) * 60000;
         document.getElementById("timer-input").value = "";
 
         document.getElementById("title-button").style.visibility = 'hidden';
